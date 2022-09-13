@@ -1,1 +1,1 @@
-To be editted later
+First attempt at C in bash
