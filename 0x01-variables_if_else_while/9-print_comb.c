@@ -2,8 +2,8 @@
 #include <stdio.h>
 /* betty style doc for function main goes there */
 /**
- *  * main - main block area
- *   * Return: 0
+ * main - main block area
+ * Return: 0
  */
 int main(void)
 {
@@ -17,9 +17,8 @@ int main(void)
 		{
 			putchar(',');
 			putchar(' ');
-		}	
+		}
 	}
 	putchar('\n');
 	return (0);
 }
-
