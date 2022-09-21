@@ -1,8 +1,7 @@
 #include "main.h"
 #include <string.h>
-
 /**
- * _strcpy - copys text from one array to another
+ * _strncpy - copys text from one array to another
  * @dest: the text variable to be modified
  * @src: the text that will be used to modify @dest
  * @n:the size of src, which will control the num times of iteration
