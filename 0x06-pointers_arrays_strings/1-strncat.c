@@ -1,7 +1,7 @@
 #include "main.h"
 #include <string.h>
 /**
- * *strncat - concatenates two strings
+ * _strncat - concatenates two strings
  * @dest:parsed sting gets modified
  * @src: string will be concatenated along with @dest string
  * @n: number of times to iterate
