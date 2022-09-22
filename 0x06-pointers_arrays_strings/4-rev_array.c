@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * reverse_array - funtion to reverse the input text
@@ -9,10 +10,13 @@
  */
 void reverse_array(int *a, int n)
 {
-	int i;
+	int temp;
+	int x, i;
 
-	for (i = n; i <= 0 ; i--)
+	for (i = 0, x = n - 1; i <= x ; i++, x--)
 	{
-
+		temp = a[x];
+		a[x] = a[i];
+		a[i] = temp;
 	}
 }
