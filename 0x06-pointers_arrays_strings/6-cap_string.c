@@ -10,8 +10,8 @@ char *cap_string(char *str)
 {
 	int i, j;
 	int delt = 'a' - 'A';
-	char c[] = {44, 59, 46, 33, 63, 34, 40, 41, 123, 125, 32, 10, 9};
-
+	char c[] = {44, 59, ' ', 46, 33, 63, 34, 40, 41, 123, 125, 32, 10, 9};
+	
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		/*checking if the first letter is lowercase alphabet*/
@@ -29,14 +29,8 @@ char *cap_string(char *str)
 				if (str[i] >= 'a' && str[i] <= 'z')
 				{
 					str[i] -= delt;
-					continue; /* break the loop*/
+					break; /* break the loop*/
 				}
-			}
-			else
-			{
-				if (str[i] >= 'A' && str[i] <= 'Z')
-					str[i] += delt;
-				continue;
 			}
 		}
 	}
