@@ -21,24 +21,22 @@ char *cap_string(char *str)
 				str[i] -= delt;
 			continue; /*carry on with the loop*/
 		}
-		for (j = 0; c[j] != '\0'; j++) 
+		for (j = 0; c[j] != '\0'; j++)
 		{
 			if (str[i] == c[j])
 			{/*if the above are found we go ahead to check the next character*/
 				i++;
-				/*Check if this character is lower case and if yes we go ahead and convert it to uppercase*/
 				if (str[i] >= 'a' && str[i] <= 'z')
 				{
 					str[i] -= delt;
-					break; /* break the loop*/
+					continue; /* break the loop*/
 				}
 			}
 			else
 			{
-				/*now am checking if our string is uppercase and will need to convert it to lower case*/
 				if (str[i] >= 'A' && str[i] <= 'Z')
 					str[i] += delt;
-				break;
+				continue;
 			}
 		}
 	}
