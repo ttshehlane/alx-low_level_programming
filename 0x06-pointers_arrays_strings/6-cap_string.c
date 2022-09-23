@@ -22,7 +22,7 @@ char *cap_string(char *str)
 			continue; /*carry on with the loop*/
 		}
 		for (j = 0; c[j] != '\0'; j++) 
-		{/*checking for word separtors: space, tabulation, new line, ,, ;, ., !, ?, \", (, ), {, and }*/
+		{
 			if (str[i] == c[j])
 			{/*if the above are found we go ahead to check the next character*/
 				i++;
@@ -36,11 +36,11 @@ char *cap_string(char *str)
 			else
 			{
 				/*now am checking if our string is uppercase and will need to convert it to lower case*/
-				if(str[i] >= 'A' && str[i] <= 'Z')
+				if (str[i] >= 'A' && str[i] <= 'Z')
 					str[i] += delt;
 				break;
 			}
-		}	
+		}
 	}
 	return (str);
 }
