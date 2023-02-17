@@ -4,7 +4,8 @@
  * _mul - multiplies two integers
  *
  * Description: Prints the the input with _putchar
- * @c: integer
+ * @a: integer
+ * @b: integer
  * Return: int
  */
 
