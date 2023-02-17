@@ -1,17 +1,14 @@
 #include "main.h"
 
 /**
- * _isdigit - checks for a digit
+ * _mul - multiplies two integers
  *
  * Description: Prints the the input with _putchar
  * @c: integer
  * Return: int
  */
 
-int _isdigit(int c)
+int mul(int a, int b)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	else
-		return (0);
+	Return (a * b);
 }
