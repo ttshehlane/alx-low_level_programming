@@ -1,9 +1,8 @@
 #include "main.h"
 
 /**
- * _mul - multiplies two integers
- *
- * Description: Prints the the input with _putchar
+ * mul - multiplies two integers
+ * Description: multiplies two integers and returns the result
  * @a: integer
  * @b: integer
  * Return: int
