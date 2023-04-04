@@ -21,10 +21,10 @@ void print_diagonal(int n)
 	{
 		while (i < n)
 		{
-			if(i >= 1)
+			if (i >= 1)
 			{
 				a = 0;
-				while(a < i)
+				while (a < i)
 				{
 					_putchar(32);
 					a++;
