@@ -22,7 +22,7 @@ int _sqrt_helper(int n, int start, int end)
 	}
 	else
 	{
-		int mid = (start + end) / 2;
+		int mid = start + (end - start) / 2;
 		int square = mid * mid;
 
 		if (square == n)
