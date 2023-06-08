@@ -3,40 +3,23 @@
 /**
  * _sqrt_helper - helper function return integer
  * @n: integer
- * @start: integer
- * @end: integer
+ * @i: integer
+ * @srt: integer
  * Return: integer
  */
-int _sqrt_helper(int n, int start, int end)
+int _sqrt_helper(int n, int i, int srt)
 {
-	if (start > end)
+	if (n < 0)
 	{
-		if (n == 1)
-		{
-			return (1);
-		}
-		else
-		{/* The number does not have a natural square root */
-			return (-1);
-		}
+		return (-1);
+	}
+	else if (n == 0)
+	{
+		return (srt);
 	}
 	else
 	{
-		int mid = start + (end - start) / 2;
-		int square = mid * mid;
-
-		if (square == n)
-		{
-			return (mid); /* Square root found */
-		}
-		else if (square > n)
-		{/* Search in the lower half of the range */
-			return (_sqrt_helper(n, start, mid - 1));
-		}
-		else
-		{/* Search in the upper half of the range */
-			return (_sqrt_helper(n, mid + 1, end));
-		}
+		return (_sqrt_helper(n - i, i + 2, srt + 1));
 	}
 }
 
@@ -47,12 +30,5 @@ int _sqrt_helper(int n, int start, int end)
  */
 int _sqrt_recursion(int n)
 {
-	if (n < 0)
-	{/* The number does not have a natural square root */
-		return (-1);
-	}
-	else
-	{
-		return (_sqrt_helper(n, 1, n / 2));
-	}
+	return (_sqrt_helper(n, 1, 0));
 }
