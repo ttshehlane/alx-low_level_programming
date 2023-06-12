@@ -12,10 +12,7 @@
  */
 int main(int argc, char *argv[])
 {
-	int ic = 1;
-	signed int count = 0;
-	int val = 0;
-	int len = 0;
+	int ic, count, val, len = 0;
 
 	if (argc <= 1)
 	{
@@ -23,6 +20,8 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
+		ic = 1;
+		count = 0;
 		while (ic < argc)
 		{
 			val = 0;
