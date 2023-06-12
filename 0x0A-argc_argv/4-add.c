@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 				val++;
 			}
 			count += atoi(argv[ic]);
-			ic++;		
+			ic++;
 		}
 		printf("%d\n", count);
 	}
