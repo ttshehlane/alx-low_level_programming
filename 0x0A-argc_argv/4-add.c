@@ -13,7 +13,7 @@
 int main(int argc, char *argv[])
 {
 	int ic = 1;
-	unsigned int count = 0;
+	signed int count = 0;
 	int val = 0;
 	int len = 0;
 
