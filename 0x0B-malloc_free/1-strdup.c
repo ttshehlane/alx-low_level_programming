@@ -21,6 +21,8 @@ char *_strdup(char *str)
 	else
 	{
 		strcpy(p, str);/*take note we are copying the strings*/
+		if (p == NULL)
+			return (NULL);
 	} /*if we do this by = it will be pointing to the same address*/
 	return (p);
 }
