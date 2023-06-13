@@ -10,12 +10,12 @@
  */
 char *create_array(unsigned int size, char c)
 {
-	char *p;
+	char *p = NULL;
 	unsigned int i;
 
 	if (size == 0)
 	{
-		return ('\0');
+		return (p);
 	}
 	else
 	{
@@ -24,6 +24,6 @@ char *create_array(unsigned int size, char c)
 		{
 			p[i] = c;
 		}
-		return (p);
 	}
+	return (p);
 }
