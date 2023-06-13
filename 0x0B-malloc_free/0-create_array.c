@@ -3,15 +3,17 @@
 #include <stdio.h>
 
 /**
- * create_array - creates an array of chars and initializes it with a specific char
+ * create_array - creates an array of chars
  * @size: int
  * @c: char
  * Return: an array of character or Null
  */
 char *create_array(unsigned int size, char c)
 {
-	char *p = (char *)malloc(size * sizeof(c)); 
+	char *p;
 	unsigned int i;
+
+	p = (char *)malloc(size * sizeof(c));
 
 	if (size == 0)
 	{
@@ -23,7 +25,7 @@ char *create_array(unsigned int size, char c)
 		{
 			p[i] = c;
 		}
-		
+		free(p);
 		return (p);
 	}
 }
