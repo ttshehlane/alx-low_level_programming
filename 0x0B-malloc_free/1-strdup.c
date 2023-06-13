@@ -17,13 +17,13 @@ char *_strdup(char *str)
 	{
 		return (NULL);
 	}
-	
-	p = (char *)malloc((len + 1) * sizeof(char));
+	p = (char *)malloc((len) * sizeof(char));
 	if (p == NULL)
 	{
 		return (NULL);
 	}
-	else{
+	else
+	{
 		strcpy(p, str);/*take note we are copying the strings*/
 	} /*if we do this by = it will be pointing to the same address*/
 	return (p);
