@@ -13,16 +13,19 @@ char *_strdup(char *str)
 	char *p;
 	unsigned int len = strlen(str);
 
-	p = (char *)malloc((len + 1) * sizeof(char));
-	if (str == NULL || p == NULL)
+	if (str == NULL)
 	{
 		return (NULL);
 	}
 	else
 	{
-		strcpy(p, str);/*take note we are copying the strings*/
+		p = (char *)malloc((len + 1) * sizeof(char));
 		if (p == NULL)
+		{
 			return (NULL);
+		}
+		else
+			strcpy(p, str);/*take note we are copying the strings*/
 	} /*if we do this by = it will be pointing to the same address*/
 	return (p);
 }
