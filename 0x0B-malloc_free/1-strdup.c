@@ -21,7 +21,7 @@ char *_strdup(char *str)
 	else
 	{
 		strcpy(p, str);/*take note we are copying the strings*/
-		if ((*p + 1) == NULL)
+		if (p + 1 == NULL)
 		{
 			return (NULL);
 		}
