@@ -37,8 +37,13 @@ char *str_concat(char *s1, char *s2)
 		else if (a >= lens1)
 		{
 			if (s2[a - lens1] == '\0')
-			    p[a] = ' ';
+			{
+				p[a] = ' ';
+			}
+			else
+			{
 			p[a] = s2[a - lens1];
+			}
 		}
 	}
 	return (p);
