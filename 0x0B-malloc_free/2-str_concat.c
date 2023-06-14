@@ -16,35 +16,26 @@ char *str_concat(char *s1, char *s2)
 
 	lens1 = strlen(s1);
 	len = lens1 + strlen(s2);
-	p = (char *)malloc(sizeof(s1) + sizeof(s2));
+	p = (char *)malloc(sizeof(s1) + sizeof(s2) - 1);
 	if (p == NULL)
-	{
 		return (NULL);
-	}
-	for (a = 0; a < len; a++)
+	if (s1 == NULL)
 	{
-		if (a < lens1)
-		{
-			if (s1[a] == '\0')
-			{
-				p[a] = ' ';
-			}
-			else
-			{
-				p[a] = s1[a];
-			}
-		}
-		else if (a >= lens1)
-		{
-			if (s2[a - lens1] == '\0')
-			{
-				p[a] = ' ';
-			}
-			else
-			{
-			p[a] = s2[a - lens1];
-			}
-		}
+		p[a] = ' ';
+		a++;
 	}
+	else
+	{
+		for (a = 0; a < strlen(s1); a++)
+			p[a] = s1[a];
+	}
+	if (s2 == NULL)
+		p[lens1] = ' ';
+	else
+	{
+		for (a = lens1; a < len; a++)
+			p[a] = s2[a - lens1];
+	}
+	p[len] = '\0';
 	return (p);
 }
