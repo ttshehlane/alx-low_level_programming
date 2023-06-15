@@ -17,19 +17,23 @@ int **alloc_grid(int width, int height)
 	p = (int **)malloc(height * sizeof(int *));
 	if (p == NULL)
 	{
-		free(p);
 		return (NULL);
 	}
 	for (r = 0; r < height; r++)
 	{
 		p[r] = (int *)malloc(width * sizeof(int));
 		if (p[r] == NULL)
-		{
-			free(p[r]);
+		{/* Free memory for previously allocated rows*/
+			for (c = 0; c < r; c++)
+				free(p[c]);
+			free(p);
 			return (NULL);
 		}
-		for (c = 0; c < width; c++)
-			p[r][c] = 0;
+		else
+		{
+			for (c = 0; c < width; c++)
+				p[r][c] = 0;
+		}
 	}
 	return (p);
 }
