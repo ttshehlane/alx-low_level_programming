@@ -40,7 +40,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	}
 	else
 	{
-		c = (char *)malloc((s1Len * n * sizeof(char)) + 1);
+		c = (char *)malloc(((s1Len + n) * sizeof(char)) + 4);
 		if (c == NULL)
 			return (NULL);
 		for (count = 0; count < (s1Len + n); count++)
