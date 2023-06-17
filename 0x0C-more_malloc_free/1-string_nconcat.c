@@ -20,13 +20,13 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	if (s2 == NULL)
 	{
 		s2 = " ";
-		n = strlen(s2);
+		n = 1;
 	}
 	s1Len = strlen(s1);
 	s2Len = strlen(s2);
 	if (n >= s2Len)
 	{
-		c = (char *)malloc((s1Len * s2Len * sizeof(char)) + 4);
+		c = (char *)malloc(((s1Len + s2Len) * sizeof(char)) + 4);
 		if (c == NULL)
 			return (NULL);
 		for (count = 0; count < (s1Len + s2Len); count++)
