@@ -2,6 +2,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+/**
+ * memAssign - assigns memory and returns pointer
+ * @n: integer
+ * Return: pointer
+ */
+char *memAssign(unsigned int n)
+{
+	char *c;
+	
+	c = (char *)malloc(n);
+	if (c == NULL)
+		return (NULL);
+
+	return (c);
+}
 
 /**
  * string_nconcat - concatenates two strings
@@ -26,9 +41,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	s2Len = strlen(s2);
 	if (n >= s2Len)
 	{
-		c = (char *)malloc(((s1Len + s2Len + 1) * sizeof(char)));
-		if (c == NULL)
-			return (NULL);
+		c = memAssign(((s1Len + s2Len + 1) * sizeof(char)));
 		for (count = 0; count < (s1Len + s2Len); count++)
 		{
 			if (count < s1Len)
@@ -40,9 +53,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	}
 	else
 	{
-		c = (char *)malloc(((s1Len + n + 1) * sizeof(char)));
-		if (c == NULL)
-			return (NULL);
+		c = memAssign(((s1Len + n + 1) * sizeof(char)));
 		for (count = 0; count < (s1Len + n); count++)
 		{
 			if (count < s1Len)
