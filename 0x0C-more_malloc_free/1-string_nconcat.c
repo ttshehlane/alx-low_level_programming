@@ -4,17 +4,29 @@
 #include <string.h>
 /**
  * memAssign - assigns memory and returns pointer
- * @n: integer
+ * @s1: pointer
+ * @s2: pointer
+ * @s1Len: integer
+ * @numByte: nth byte to print
+ * @n: integer of memmory to be allocated
  * Return: pointer
  */
-char *memAssign(unsigned int n)
+char *memAssign(char *s1, char *s2, int s1Len, int numByte, unsigned int n)
 {
 	char *c;
-	
+	int count = 0;
+
 	c = (char *)malloc(n);
 	if (c == NULL)
 		return (NULL);
-
+	for (count = 0; count < (s1Len + numByte); count++)
+	{
+		if (count < s1Len)
+			c[count] = s1[count];
+		else
+			c[count] = s2[count - s1Len];
+	}
+	c[s1Len + numByte] = '\0';
 	return (c);
 }
 
@@ -28,7 +40,7 @@ char *memAssign(unsigned int n)
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *c;
-	unsigned int s1Len, s2Len, count;
+	unsigned int s1Len, s2Len;
 
 	if (s1 == NULL)
 		s1 = " ";
@@ -41,27 +53,11 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	s2Len = strlen(s2);
 	if (n >= s2Len)
 	{
-		c = memAssign(((s1Len + s2Len + 1) * sizeof(char)));
-		for (count = 0; count < (s1Len + s2Len); count++)
-		{
-			if (count < s1Len)
-				c[count] = s1[count];
-			else
-				c[count] = s2[count - s1Len];
-		}
-		c[s1Len + s2Len] = '\0';
+		c = memAssign(s1, s2, s1Len, s2Len, ((s1Len + s2Len + 1) * sizeof(char)));
 	}
 	else
 	{
-		c = memAssign(((s1Len + n + 1) * sizeof(char)));
-		for (count = 0; count < (s1Len + n); count++)
-		{
-			if (count < s1Len)
-				c[count] = s1[count];
-			else
-				c[count] = s2[count - s1Len];
-		c[s1Len + n] = '\0';
-		}
+		c = memAssign(s1, s2, s1Len, n, ((s1Len + n + 1) * sizeof(char)));
 	}
 	return (c);
 }
