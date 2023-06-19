@@ -43,14 +43,15 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	unsigned int s1Len, s2Len;
 
 	if (s1 == NULL)
-		s1 = " ";
+		s1 = "";
 	if (s2 == NULL)
 	{
-		s2 = " ";
+		s2 = "";
 		n = 1;
 	}
 	s1Len = strlen(s1);
 	s2Len = strlen(s2);
+
 	if (n >= s2Len)
 	{
 		c = memAssign(s1, s2, s1Len, s2Len, ((s1Len + s2Len + 1) * sizeof(char)));
