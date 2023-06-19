@@ -17,7 +17,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 	s1 = (s1 == NULL) ? " " : s1;
 	s2 = (s2 == NULL) ? " " : s2;
-	n = (s2[1] == '\0') ? 1 : n;
+	n = (s2[1] == '\0' || n == 0) ? 1 : n;
 	s1Len = strlen(s1);
 	s2Len = strlen(s2);
 	if (n >= s2Len)
