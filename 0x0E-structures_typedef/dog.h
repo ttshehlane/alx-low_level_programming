@@ -9,12 +9,12 @@
  * Description: This structure represents a dog and stores
  * its information, name, age, owner
  */
-struct dog
+typedef struct dog
 {
 	char *name;
 	float age;
 	char *owner;
-};
+} dog_t;
 
 void init_dog(struct dog *d, char *name, float age, char *owner);
 
