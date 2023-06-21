@@ -22,12 +22,19 @@ dog_t *new_dog(char *name, float age, char *owner)
 		return (NULL);
 	pup->name = (char *)malloc((strlen(lebitso)) * sizeof(char));
 	if (pup->name == NULL)
+	{
+		free(pup);
 		return (NULL);
+	}
 	pup->name = lebitso;
 	pup->age = age;
 	pup->owner = (char *)malloc((strlen(master)) * sizeof(char));
 	if (pup->owner == NULL)
+	{
+		free(pup->name);
+		free(pup);
 		return (NULL);
+	}
 	pup->owner = master;
 	return (pup);
 }
