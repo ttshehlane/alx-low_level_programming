@@ -11,7 +11,9 @@ void print_all(const char * const format, ...)
 	va_list all;
 	unsigned int c = 0, skip;
 	char *str;
-
+	
+	if (format == NULL)
+		return;
 	va_start(all, format);
 	while (format[c])
 	{
