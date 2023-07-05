@@ -29,7 +29,12 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	}
 	if (current != NULL)
 	{
-		new_node->next = previous->next;
+		new_node->next = current;
+		previous->next = new_node;
+		return (new_node);
+	}
+	else if (count == idx - 1)
+	{
 		previous->next = new_node;
 		return (new_node);
 	}
