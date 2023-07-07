@@ -11,6 +11,11 @@ void print_binary(unsigned long int n)
 	int first_non_zerobit = 0;
 	char bit;
 
+	if (n == 0)
+	{
+		_putchar('0');
+		return;
+	}
 	while (mask > 0)
 	{/*checking if remaind will be 0 or 1*/
 		if (n & mask)
@@ -23,5 +28,4 @@ void print_binary(unsigned long int n)
 			_putchar(bit);
 		mask >>= 1;
 	}
-	_putchar('\n');
 }
