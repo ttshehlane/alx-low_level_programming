@@ -8,26 +8,29 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	FILE *fptr;
-	unsigned int count = 0;
+	int fd;
+	int num_read, num_written;
 	char *ch;
 
 	if (filename == NULL)
 		return (0);
 	ch = malloc(letters + 1);
-	fptr = fopen(filename,"r");
-	if (fptr == NULL || ch == NULL)
+	fd = open(filename, O_RDONLY);
+	if (fd < 0 || ch == NULL)
 		return (0);
-
-	if (fgets (ch, letters, fptr) != NULL)
+	num_read = read(fd, ch, letters);
+	if (num_read < 0)
 	{
-		while (ch[count] != '\0')
-		{
-			_putchar(ch[count]);
-			count++;
-		}
+		close(fd);
+		return (0);
 	}
+	ch[num_read] = '\0';
+	num_written = write(STDOUT_FILENO, ch, num_read);
+
 	free(ch);
-	fclose(fptr);
-	return (count);
+	close(fd);
+
+	if (num_read != num_written)
+		return (0);
+	return (num_read);
 }
