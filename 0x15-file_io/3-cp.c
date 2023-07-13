@@ -37,7 +37,7 @@ void check_write(int fd, char *filename)
  */
 void check_close(int fd)
 {
-	if (close(fd) == -1)
+	if (fd == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(100);
@@ -52,7 +52,7 @@ void check_close(int fd)
  */
 int main(int argc, char *argv[])
 {
-	int fd_from, fd_to, bytes_written, bytes_read;
+	int fd_from, fd_to, bytes_written, bytes_read, close_from, close_to;
 	char buff[1024];
 
 	if (argc != 3)
@@ -64,12 +64,16 @@ int main(int argc, char *argv[])
 	check_read(fd_from, argv[1]);
 	bytes_read = read(fd_from, buff, sizeof(buff));
 	check_read(bytes_read, argv[1]);
-	buff[bytes_read] = '\0';
+	buff[1024] = '\0';
+
 	fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	check_write(fd_to, argv[2]);
-	bytes_written = write(fd_to, buff, bytes_read);
+	bytes_written = write(fd_to, buff, sizeof(1024));
 	check_write(bytes_written, argv[2]);
-	check_close(fd_to);
-	check_close(fd_from);
-	return (1);
+
+	close_to = close(fd_to);
+	check_close(close_to);
+	close_from = close(fd_from);
+	check_close(close_from);
+	return (0);
 }
