@@ -62,7 +62,7 @@ void copy_contents(int fd_from, int fd_to, char *file_from, char *file_to)
 		check_read(bytes_read, file_from);
 
 		bytes_written = 0;
-		while(bytes_written < bytes_read)
+		while (bytes_written < bytes_read)
 		{
 			count = write(fd_to, buff + bytes_written, bytes_read - bytes_written);
 			check_write(count, file_to);
