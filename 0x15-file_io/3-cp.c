@@ -43,7 +43,25 @@ void check_close(int fd)
 		exit(100);
 	}
 }
+void copy_contents(int fd_from, int fd_to, char *file_from, char *file_to)
+{
+	int bytes_read, bytes_written, count;
+	char buff[1024];
 
+	while (bytes_read != 0)
+	{
+		bytes_read = read(fd_from, buff, sizeof(buff));
+		check_read(bytes_read, file_from);
+
+		bytes_written = 0;
+		while(bytes_written < bytes_read)
+		{
+			count = write(fd_to, buff + bytes_written, bytes_read - bytes_written);
+			check_write(count, file_to);
+			bytes_written += count;
+		}
+	}
+}
 /**
  * main - check the code
  * @argc: number of arguments
@@ -52,8 +70,7 @@ void check_close(int fd)
  */
 int main(int argc, char *argv[])
 {
-	int fd_from, fd_to, bytes_written, bytes_read, close_from, close_to;
-	char buff[1024];
+	int fd_from, fd_to, close_from, close_to;
 
 	if (argc != 3)
 	{
@@ -62,14 +79,10 @@ int main(int argc, char *argv[])
 	}
 	fd_from = open(argv[1], O_RDONLY);
 	check_read(fd_from, argv[1]);
-	bytes_read = read(fd_from, buff, sizeof(buff));
-	check_read(bytes_read, argv[1]);
-	buff[1024] = '\0';
-
 	fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	check_write(fd_to, argv[2]);
-	bytes_written = write(fd_to, buff, sizeof(1024));
-	check_write(bytes_written, argv[2]);
+
+	copy_contents(fd_from, fd_to, argv[1], argv[2]);
 
 	close_to = close(fd_to);
 	check_close(close_to);
