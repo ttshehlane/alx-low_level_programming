@@ -43,9 +43,17 @@ void check_close(int fd)
 		exit(100);
 	}
 }
+/**
+ * copy_contents - copies the content buffer by buffer
+ * @fd_from: source file
+ * @fd_to: destination file
+ * @file_from: source file name
+ * @file_to: destination file name
+ * Return: always 0
+ */
 void copy_contents(int fd_from, int fd_to, char *file_from, char *file_to)
 {
-	int bytes_read, bytes_written, count;
+	int bytes_read = 1, bytes_written, count;
 	char buff[1024];
 
 	while (bytes_read != 0)
